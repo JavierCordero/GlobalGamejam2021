@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //Requerimos el RigidBoy para poder mover el objeto
 [RequireComponent(typeof(Rigidbody))]
@@ -20,6 +21,10 @@ public class EarthquakeComponent : MonoBehaviour
     [Tooltip("Duración total del temblor en segundos")]
     [Range(0f, 2f)]
     public float shakeDuration = 1f;
+
+    [Header("Warning Sign")]
+    public float signDuration;      //Duración de tiempo que aparece ANTES del terremoto
+    public Image earthQuakeSign;    //Imagen del warning
 
     //COOLDOWN
     [Header("Cooldown")]
@@ -42,6 +47,8 @@ public class EarthquakeComponent : MonoBehaviour
     //PRIVADO
     private float _timer;                                       //Timer interno de la duración de los temblores
     private float _cooldownTimer;                               //Timer interno del cooldown de los temblores
+    private bool _isShaking;                                    //¿Está ahora mismo haciendo terremoto?
+    private bool _isPowerUp;                                    //¿Se ha pedidod como power up?
     private Vector3 _startPos;                                  //Posición inicial
     private Vector3 _randomPos;                                 //Posición aleatoria que se le va dando al suelo
 
@@ -60,37 +67,48 @@ public class EarthquakeComponent : MonoBehaviour
             return;
         }
         _startPos = EarthquakeTarget.transform.position;
+        _cooldownTimer = shakeCooldown;
         _cameraShake = Camera.main.GetComponent<CameraShakeComponent>();
 
         _playerInput = FindObjectOfType<PlayerInput>();
+        earthQuakeSign.enabled = false;
     }
 
     public void Update()
     {
-        if (_cooldownTimer <= 0)
+        if (_cooldownTimer >= 0)
         {
             _cooldownTimer -= Time.deltaTime;
+        }
+        else if (!_isShaking)
+        {
+            StartEarthquake();
         }
     }
 
     public void StartEarthquake()
     {
-
-        if (_cooldownTimer <= 0)
+        float prob = shakeProbability / 100;
+        float rnd = Random.Range(0, 1);
+        if (rnd <= prob)
         {
-            float prob = shakeProbability / 100;
-            float rnd = Random.Range(0, 1);
-            if (rnd <= prob)
-            {
-                _playerInput._powerUpEnabled = false;
-                StartCoroutine(_cameraShake.Shake(_cameraShakeDuration, _cameraShakeForce));
-                BeginShake();
-            }
-            else { 
-                _cooldownTimer = shakeCooldown; 
-            }
+            //Consumimos el powerup
+            if (_isPowerUp) _isPowerUp = false;
+            _playerInput._powerUpEnabled = false;
+
+            //Shake de cámara y del objeto target
+            _isShaking = true;
+            StartCoroutine(_cameraShake.Shake(_cameraShakeDuration, _cameraShakeForce));
+            BeginShake();
+            
+
+        }
+        else
+        {
+            _cooldownTimer = shakeCooldown;
         }
     }
+
 
 
     /// <summary>
@@ -98,7 +116,7 @@ public class EarthquakeComponent : MonoBehaviour
     /// </summary>
     public void BeginShake()
     {
-        StopAllCoroutines();
+        StopAllCoroutines(); //TODO: hace falta?
         StartCoroutine(Shake());
     }
 
@@ -110,22 +128,28 @@ public class EarthquakeComponent : MonoBehaviour
     /// <returns>No devuelve nada</returns>
     private IEnumerator Shake()
     {
+        //Esperamos este tiempo que va a ser el que se esté viendo la imagen de warning solamente
+        earthQuakeSign.enabled = true;
+        yield return new WaitForSeconds(signDuration);
+
+        //Aquí hacemos el shake propiamente dicho
         _timer = 0f;
         while (_timer < shakeDuration)
         {
             _timer += Time.deltaTime;
+            Debug.Log(_timer);
             _randomPos = _startPos + (Random.insideUnitSphere * shakeForce); //Coloco el objeto en una posición aleatoria de un área de tamaño "proporcional a la fuerza"
             EarthquakeTarget.transform.position = _randomPos;
 
 
             yield return null;
-
         }
 
-        //Volvemos a poner el suelo donde estaba
+        //Volvemos a poner todo como estaba
         EarthquakeTarget.transform.position = _startPos;
-
         _cooldownTimer = shakeCooldown;
+        earthQuakeSign.enabled = false;
+        _isShaking = false;
     }
 
 }

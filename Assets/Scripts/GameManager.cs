@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     //UI
-    public Text timerText; //Esto igual ni va aquí
+    public Text timerText;          //Esto igual ni va aquí
+
 
     //Gestión del tiempo
     [Header("Tiempo para Objetivo")]
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     public float secondsToGetObjective = 1;
 
     //Random Objectives
+    [Header("Settings Objetivos")]
     public bool RandomObjectives = true;
     public float distanciaMinimaEntreObjetivos = 3;
 
