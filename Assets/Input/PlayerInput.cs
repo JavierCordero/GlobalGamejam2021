@@ -59,7 +59,11 @@ public class PlayerInput : MonoBehaviour
         _playerInputActions.Player1Actions.PowerUp.performed += Enable_PowerUp_Player1;
         _playerInputActions.Player2Actions.PowerUp.performed += Enable_PowerUp_Player2;
 
+        _playerInputActions.Player1Actions.Pause.performed += TogglePause;
+        //_playerInputActions.Player2Actions.Pause.performed += TogglePause;
+
     }
+
 
     private void OnDisable()
     {
@@ -78,6 +82,9 @@ public class PlayerInput : MonoBehaviour
 
         _playerInputActions.Player1Actions.PowerUp.performed -= Player1_Move_Performed;
         _playerInputActions.Player2Actions.PowerUp.performed -= Player2_Move_Performed;
+
+        _playerInputActions.Player1Actions.Pause.performed -= TogglePause;
+        //_playerInputActions.Player2Actions.Pause.performed -= TogglePause;
     }
 
     private void EnablePulse1(InputAction.CallbackContext context)
@@ -172,5 +179,10 @@ public class PlayerInput : MonoBehaviour
 
         if (context.control.device.deviceId == P2 || t.FullName == "UnityEngine.InputSystem.Keyboard")
             _movementInputP2 = Vector2.zero;
+    }
+
+    private void TogglePause(InputAction.CallbackContext context)
+    {
+        GameManager.instance.OnTogglePause();
     }
 }

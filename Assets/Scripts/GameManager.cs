@@ -6,17 +6,25 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     //UI
-    public Text timerText;          //Esto igual ni va aquí
-
+    [Header("Textos de la escena")]
+    public Text timerText;              //Esto igual ni va aquí
+    public Text puntosP1Text;           //Puntos p1
+    public Text puntosP2Text;           //Puntos p2
+    public GameObject panelPausa;       //Panel de la pausa
+    public Slider volumeSlide;       //Panel de la pausa
 
     //Gestión del tiempo
     [Header("Tiempo para Objetivo")]
     public float minutesToGetObjective = 5;
     public float secondsToGetObjective = 1;
 
+    //Multiplayer
+    [Header("Multiplayer")]
+    public bool IsMultiplayer = false;
+
     //Random Objectives
     [Header("Settings Objetivos")]
-
+    public float numObjetivos = 5;
     public Transform posicionObjetivoCanvas;        //Posición en el mundo que va a tener el objeto canvas
     public bool RandomObjectives = true;
     public float distanciaMinimaEntreObjetivos = 3;
@@ -28,12 +36,17 @@ public class GameManager : MonoBehaviour
     private ObjectiveProp _canvasObjective;
     private int _objectiveIndex;    //Indice en la lista de objetivos en caso de no ser aleatorio
 
+    //Puntos
+    private int puntosP1 = 0;
+    private int puntosP2 = 0;
+
     //Timer en segundos
     private float _currentTimer;
 
 
     //Patrón singleton de toda la vida
     public static GameManager instance;
+    private bool _isPaused;
 
 
     //Awake is always called before any Start functions
@@ -55,6 +68,7 @@ public class GameManager : MonoBehaviour
     {
         _objectiveProps = new List<ObjectiveProp>();
         _currentTimer = secondsToGetObjective + (minutesToGetObjective * 60);
+        puntosP1 = puntosP2 = 0;
     }
 
     // Update is called once per frame
@@ -64,17 +78,21 @@ public class GameManager : MonoBehaviour
         if (_currentObjective == null) SetNewObjective();
         else
         {
-            if (_currentTimer >= 0)
+            if (!IsMultiplayer)
             {
-                _currentTimer -= Time.deltaTime;
-                int minutes = (int)_currentTimer / 60;              //Get total minutes
-                int seconds = (int)_currentTimer - (minutes * 60);  //Get seconds for display alongside minutes
-                if (timerText)
-                    timerText.text = "TIEMPO: " + minutes.ToString("D2") + ":" + seconds.ToString("D2");
-            }
-            else
-            {
-                OnGameOver();
+                //Timer singleplayer
+                if (_currentTimer >= 0)
+                {
+                    _currentTimer -= Time.deltaTime;
+                    int minutes = (int)_currentTimer / 60;              //Get total minutes
+                    int seconds = (int)_currentTimer - (minutes * 60);  //Get seconds for display alongside minutes
+                    if (timerText)
+                        timerText.text = "TIEMPO: " + minutes.ToString("D2") + ":" + seconds.ToString("D2");
+                }
+                else
+                {
+                    OnGameOver();
+                }
             }
         }
     }
@@ -129,14 +147,32 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OnObjectiveCollected(ObjectiveProp collectedProp)
+    public void OnObjectiveCollected(ObjectiveProp collectedProp, PlayerInformation playerInfo)
     {
         Debug.Log("Objetivo conseguido :)");
         _objectiveProps.Remove(collectedProp);
-        SetNewObjective(); //TODO: va aqui o no hace falta?
 
         //Sumar tiempo o lo que sea
-        _currentTimer += 60;
+        if (playerInfo._myPlayerNumber == myPlayerNumber.Player1)
+        {
+            puntosP1++;
+            if(puntosP1Text)
+                puntosP1Text.text = "P1: " + puntosP1.ToString("D2");
+        }
+        else if (playerInfo._myPlayerNumber == myPlayerNumber.Player2)
+        {
+            puntosP2++;
+            if(puntosP2Text)
+                puntosP2Text.text = "P2: " + puntosP2.ToString("D2");
+
+        }
+
+        numObjetivos--;
+        if (numObjetivos <= 0)
+        {
+            OnGameOver();
+        }
+        else SetNewObjective();
     }
 
     public bool IsRandomMode() { return RandomObjectives; }
@@ -151,12 +187,37 @@ public class GameManager : MonoBehaviour
         //Ir al menú de resultados, o lo que sea
     }
 
+    public void OnTogglePause()
+    {
+        _isPaused = !_isPaused;
+        if (_isPaused)
+        {
+            Time.timeScale = 0;
+        }
+        else Time.timeScale = 1;
+
+        panelPausa.SetActive(_isPaused);
+
+    }
+
+    public void OnGameExit()
+    {
+        //TODO: Cambia a la escena de menú, que ni idea de cuál es
+        Debug.LogWarning("Closing game...");
+    }
+
+    public void OnVolumeChange()
+    {
+        float volumen = volumeSlide.value;
+        //Wow mira soy una canción voy a ajustar mi volumen xdd
+        Debug.Log("Volumen: " + volumen);
+    }
 
     private void ObjectiveCanvasCopySetUp()
     {
         //Spawn de una copia del objeto en el área de objetivo del Canvas
         ObjectiveProp old = _canvasObjective;
-       
+
         _canvasObjective = Instantiate(_currentObjective, posicionObjetivoCanvas);
 
         _canvasObjective.gameObject.transform.localPosition = new Vector3(0, 0, 0); //creeme, es así
@@ -171,6 +232,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(old.gameObject);
         }
-        
+
     }
 }

@@ -33,6 +33,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""a760d9cf-7675-427b-8b17-e1e54a463eea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -77,6 +85,39 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PowerUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64887182-ebfe-440c-883f-e9db3a82ba84"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c92ce4d-10f6-4a3d-9abb-bac0bcd316ee"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e75b2076-5cbe-42f6-b9b9-1739475dc7c9"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -291,6 +332,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_Player1Actions = asset.FindActionMap("Player1Actions", throwIfNotFound: true);
         m_Player1Actions_Pulse = m_Player1Actions.FindAction("Pulse", throwIfNotFound: true);
         m_Player1Actions_PowerUp = m_Player1Actions.FindAction("PowerUp", throwIfNotFound: true);
+        m_Player1Actions_Pause = m_Player1Actions.FindAction("Pause", throwIfNotFound: true);
         // Player2Actions
         m_Player2Actions = asset.FindActionMap("Player2Actions", throwIfNotFound: true);
         m_Player2Actions_Pulse = m_Player2Actions.FindAction("Pulse", throwIfNotFound: true);
@@ -350,12 +392,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private IPlayer1ActionsActions m_Player1ActionsActionsCallbackInterface;
     private readonly InputAction m_Player1Actions_Pulse;
     private readonly InputAction m_Player1Actions_PowerUp;
+    private readonly InputAction m_Player1Actions_Pause;
     public struct Player1ActionsActions
     {
         private @PlayerInputActions m_Wrapper;
         public Player1ActionsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pulse => m_Wrapper.m_Player1Actions_Pulse;
         public InputAction @PowerUp => m_Wrapper.m_Player1Actions_PowerUp;
+        public InputAction @Pause => m_Wrapper.m_Player1Actions_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player1Actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -371,6 +415,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @PowerUp.started -= m_Wrapper.m_Player1ActionsActionsCallbackInterface.OnPowerUp;
                 @PowerUp.performed -= m_Wrapper.m_Player1ActionsActionsCallbackInterface.OnPowerUp;
                 @PowerUp.canceled -= m_Wrapper.m_Player1ActionsActionsCallbackInterface.OnPowerUp;
+                @Pause.started -= m_Wrapper.m_Player1ActionsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_Player1ActionsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_Player1ActionsActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_Player1ActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -381,6 +428,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @PowerUp.started += instance.OnPowerUp;
                 @PowerUp.performed += instance.OnPowerUp;
                 @PowerUp.canceled += instance.OnPowerUp;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -471,6 +521,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     {
         void OnPulse(InputAction.CallbackContext context);
         void OnPowerUp(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IPlayer2ActionsActions
     {
