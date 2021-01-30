@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public Text puntosP1Text;           //Puntos p1
     public Text puntosP2Text;           //Puntos p2
     public GameObject panelPausa;       //Panel de la pausa
+    public GameObject panelEndGameSinglePlayer;//Panel del fin juego singleplayer
     public Slider volumeSlide;       //Panel de la pausa
 
     //Gestión del tiempo
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
     //Patrón singleton de toda la vida
     public static GameManager instance;
     private bool _isPaused;
+    private bool _isGameOver;
 
 
     //Awake is always called before any Start functions
@@ -74,6 +77,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_isGameOver)
+            return;
         //Si no tengo objetivo, selecciono uno
         if (_currentObjective == null) SetNewObjective();
         else
@@ -183,8 +188,19 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void OnGameOver()
     {
+        if (_isGameOver)
+            return;
+        _isGameOver = true;
         Debug.Log("Game over!");
+        if (!IsMultiplayer)
+            GameOverSinglePlayer();
         //Ir al menú de resultados, o lo que sea
+    }
+
+    void GameOverSinglePlayer()
+    {
+        panelEndGameSinglePlayer.SetActive(true);
+        panelEndGameSinglePlayer.GetComponentInChildren<Text>().text = "You have found " + puntosP1.ToString() + " objects!!!";
     }
 
     public void OnTogglePause()
@@ -203,7 +219,9 @@ public class GameManager : MonoBehaviour
     public void OnGameExit()
     {
         //TODO: Cambia a la escena de menú, que ni idea de cuál es
-        Debug.LogWarning("Closing game...");
+        Debug.LogWarning("Yeee");
+        SceneManager.LoadScene("MainMenuScene");
+        //SceneManager.LoadSceneAsync(0);
     }
 
     public void OnVolumeChange()

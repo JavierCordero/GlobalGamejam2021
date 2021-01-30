@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //Requerimos el RigidBoy para poder mover el objeto
-[RequireComponent(typeof(Rigidbody))]
+//[RequireComponent(typeof(Rigidbody))]
 
 public class EarthquakeComponent : MonoBehaviour
 {
