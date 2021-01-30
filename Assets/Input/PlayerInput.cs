@@ -56,7 +56,9 @@ public class PlayerInput : MonoBehaviour
         _playerInputActions.PlayerMovement.Player2Move.performed += Player2_Move_Performed;
         _playerInputActions.PlayerMovement.Player2Move.canceled += Player2_Move_Canceled;
 
-        _playerInputActions.Player1Actions.PowerUp.performed += Enable_PowerUp;
+        _playerInputActions.Player1Actions.PowerUp.performed += Enable_PowerUp_Player1;
+        _playerInputActions.Player2Actions.PowerUp.performed += Enable_PowerUp_Player2;
+
     }
 
     private void OnDisable()
@@ -74,7 +76,8 @@ public class PlayerInput : MonoBehaviour
         _playerInputActions.PlayerMovement.Player2Move.performed -= Player2_Move_Performed;
         _playerInputActions.PlayerMovement.Player2Move.canceled -= Player2_Move_Canceled;
 
-        _playerInputActions.Player1Actions.PowerUp.performed -= Enable_PowerUp;
+        _playerInputActions.Player1Actions.PowerUp.performed -= Player1_Move_Performed;
+        _playerInputActions.Player2Actions.PowerUp.performed -= Player2_Move_Performed;
     }
 
     private void EnablePulse1(InputAction.CallbackContext context)
@@ -125,10 +128,34 @@ public class PlayerInput : MonoBehaviour
             _movementInputP1 = Vector2.zero;
     }
 
-    private void Enable_PowerUp(InputAction.CallbackContext context)
+    private void Enable_PowerUp_Player1(InputAction.CallbackContext context)
     {
-        //DE MOMENTO SOLO VALE PARA EL EARTHQUAKE TODO IMPORTANTE!!!
-        FindObjectOfType<EarthquakeComponent>().StartEarthquake();
+        System.Type t = context.control.device.GetType();
+        if (context.control.device.deviceId == P1 || t.FullName == "UnityEngine.InputSystem.Keyboard")
+        {
+            PlayerInformation[] PI = FindObjectsOfType<PlayerInformation>();
+            if (PI[0]._myPlayerNumber == myPlayerNumber.Player1)
+            {
+                PI[0].StartPowerUp();
+            }
+
+            else PI[1].StartPowerUp();
+        }
+    }
+
+    private void Enable_PowerUp_Player2(InputAction.CallbackContext context)
+    {
+        System.Type t = context.control.device.GetType();
+        if (context.control.device.deviceId == P2 || t.FullName == "UnityEngine.InputSystem.Keyboard")
+        {
+            PlayerInformation[] PI = FindObjectsOfType<PlayerInformation>();
+            if (PI[0]._myPlayerNumber == myPlayerNumber.Player2)
+            {
+                PI[0].StartPowerUp();
+            }
+
+            else PI[1].StartPowerUp();
+        }
     }
 
     private void Player2_Move_Performed(InputAction.CallbackContext context)
