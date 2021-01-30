@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5056050806041288440}
   - component: {fileID: 5056050806041288443}
   m_Layer: 0
-  m_Name: CubePowerUp
+  m_Name: DoorPowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,3 +107,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myPowerUpType: 0
+  powerUpSprite: {fileID: 21300000, guid: 40accfdbe4b2d784fa6b668f6c459c2a, type: 3}

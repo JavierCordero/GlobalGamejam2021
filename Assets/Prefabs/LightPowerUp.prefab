@@ -107,3 +107,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myPowerUpType: 1
+  powerUpSprite: {fileID: 21300000, guid: b2b85978f9a46c043988fb6b176cc616, type: 3}

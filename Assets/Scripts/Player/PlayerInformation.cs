@@ -10,6 +10,9 @@ public class PlayerInformation : MonoBehaviour
 {
     public myPlayerNumber _myPlayerNumber;
     public PowerUps _currentPowerUp = PowerUps.NONE;
+
+    public SpriteRenderer powerUpRenderer;
+
     public float _waitLightPowerUp = 5;
 
     private DoorComponent[] doors;
