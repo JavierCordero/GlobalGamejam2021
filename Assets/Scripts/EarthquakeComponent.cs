@@ -101,8 +101,6 @@ public class EarthquakeComponent : MonoBehaviour
             _isShaking = true;
             StartCoroutine(_cameraShake.Shake(_cameraShakeDuration, _cameraShakeForce));
             BeginShake();
-            
-
         }
         else
         {
