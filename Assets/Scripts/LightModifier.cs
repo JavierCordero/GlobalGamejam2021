@@ -19,14 +19,18 @@ public class LightModifier : MonoBehaviour
     public float errorTolerance = 0.1f;
     public bool turnOnOffWithLerp = false;
 
+    Coroutine[] currentCoroutine;
+
     // Start is called before the first frame update
     void Start()
     {
         lightsOnScene = FindObjectsOfType<Light>();
         intensityInitialValues = new float[lightsOnScene.Length];
+        currentCoroutine = new Coroutine[lightsOnScene.Length];
         for(int i=0; i<intensityInitialValues.Length; ++i)
         {
             intensityInitialValues[i] = lightsOnScene[i].intensity;
+            currentCoroutine[i] = null;
         }
     }
 
@@ -40,15 +44,23 @@ public class LightModifier : MonoBehaviour
                 {
                     if (isPlayer1&& lightsOnScene[i]==lightP1)
                     {
-                        StartCoroutine(LerpLightIntensity(i, intensityInitialValues[i], turnOnOffSpeed, errorTolerance));
+                        if (currentCoroutine[i] != null)
+                            StopCoroutine(currentCoroutine[i]);
+                        currentCoroutine[i] = StartCoroutine(LerpLightIntensity(i, intensityInitialValues[i], turnOnOffSpeed, errorTolerance));
                     }
                     else if(!isPlayer1 && lightsOnScene[i]==lightP2)
                     {
-                        StartCoroutine(LerpLightIntensity(i, intensityInitialValues[i], turnOnOffSpeed, errorTolerance));
+                        if (currentCoroutine[i] != null)
+                            StopCoroutine(currentCoroutine[i]);
+                        currentCoroutine[i] = StartCoroutine(LerpLightIntensity(i, intensityInitialValues[i], turnOnOffSpeed, errorTolerance));
                     }
                 }
                 else
-                    StartCoroutine(LerpLightIntensity(i, intensityInitialValues[i], turnOnOffSpeed, errorTolerance));
+                {
+                    if (currentCoroutine[i] != null)
+                        StopCoroutine(currentCoroutine[i]);
+                    currentCoroutine[i] = StartCoroutine(LerpLightIntensity(i, intensityInitialValues[i], turnOnOffSpeed, errorTolerance));
+                }
             }
         }
         else
@@ -82,15 +94,23 @@ public class LightModifier : MonoBehaviour
                 {
                     if (isPlayer1 && lightsOnScene[i] == lightP1)
                     {
-                        StartCoroutine(LerpLightIntensity(i, playerLightOnIntensity, turnOnOffSpeed, errorTolerance));
+                        if (currentCoroutine[i] != null)
+                            StopCoroutine(currentCoroutine[i]);
+                        currentCoroutine[i] = StartCoroutine(LerpLightIntensity(i, playerLightOnIntensity, turnOnOffSpeed, errorTolerance));
                     }
                     else if (!isPlayer1 && lightsOnScene[i] == lightP2)
                     {
-                        StartCoroutine(LerpLightIntensity(i, playerLightOnIntensity, turnOnOffSpeed, errorTolerance));
+                        if (currentCoroutine[i] != null)
+                            StopCoroutine(currentCoroutine[i]);
+                        currentCoroutine[i] = StartCoroutine(LerpLightIntensity(i, playerLightOnIntensity, turnOnOffSpeed, errorTolerance));
                     }
                 }
                 else
-                    StartCoroutine(LerpLightIntensity(i, lightOffIntensity, turnOnOffSpeed, errorTolerance));
+                {
+                    if (currentCoroutine[i] != null)
+                        StopCoroutine(currentCoroutine[i]);
+                    currentCoroutine[i] = StartCoroutine(LerpLightIntensity(i, lightOffIntensity, turnOnOffSpeed, errorTolerance));
+                }
             }
         }
         else
@@ -119,6 +139,7 @@ public class LightModifier : MonoBehaviour
         while (Mathf.Abs(lightsOnScene[lightId].intensity - targetValue) > errorTolerance)
         {
             lightsOnScene[lightId].intensity = Mathf.Lerp(lightsOnScene[lightId].intensity, targetValue, speed);
+            print(lightId + " " + targetValue);
             yield return null;
         }
     }

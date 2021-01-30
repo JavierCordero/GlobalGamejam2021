@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     public Text timerText;              //Esto igual ni va aquí
     public Text puntosP1Text;           //Puntos p1
     public Text puntosP2Text;           //Puntos p2
-
+    public GameObject panelPausa;       //Panel de la pausa
+    public Slider volumeSlide;       //Panel de la pausa
 
     //Gestión del tiempo
     [Header("Tiempo para Objetivo")]
@@ -186,7 +187,7 @@ public class GameManager : MonoBehaviour
         //Ir al menú de resultados, o lo que sea
     }
 
-    public void OnPause()
+    public void OnTogglePause()
     {
         _isPaused = !_isPaused;
         if (_isPaused)
@@ -195,7 +196,21 @@ public class GameManager : MonoBehaviour
         }
         else Time.timeScale = 1;
 
-        Debug.Log("Pausellamado");
+        panelPausa.SetActive(_isPaused);
+
+    }
+
+    public void OnGameExit()
+    {
+        //TODO: Cambia a la escena de menú, que ni idea de cuál es
+        Debug.LogWarning("Closing game...");
+    }
+
+    public void OnVolumeChange()
+    {
+        float volumen = volumeSlide.value;
+        //Wow mira soy una canción voy a ajustar mi volumen xdd
+        Debug.Log("Volumen: " + volumen);
     }
 
     private void ObjectiveCanvasCopySetUp()
