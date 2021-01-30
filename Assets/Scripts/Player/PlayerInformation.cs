@@ -10,13 +10,16 @@ public class PlayerInformation : MonoBehaviour
 {
     public myPlayerNumber _myPlayerNumber;
     public PowerUps _currentPowerUp = PowerUps.NONE;
+    public float _waitLightPowerUp = 5;
 
     private DoorComponent[] doors;
+    private LightModifier lightModifier;
 
     private void Start()
     {
         _currentPowerUp = PowerUps.NONE;
         doors = FindObjectsOfType<DoorComponent>();
+        lightModifier = FindObjectOfType<LightModifier>();
     }
 
     public void StartPowerUp()
@@ -27,6 +30,8 @@ public class PlayerInformation : MonoBehaviour
                 closeDoor();
                 break;
             case PowerUps.TURN_LIGHTS_OFF:
+                if (lightModifier)
+                    StartCoroutine(ActivateLightPowerUp());
                 break;
         }
 
@@ -43,5 +48,10 @@ public class PlayerInformation : MonoBehaviour
         }
     }
 
-
+    IEnumerator ActivateLightPowerUp()
+    {
+        lightModifier.TurnOffLights(_myPlayerNumber == myPlayerNumber.Player1);
+        yield return new WaitForSeconds(_waitLightPowerUp);
+        lightModifier.TurnOnLights(_myPlayerNumber == myPlayerNumber.Player1);
+    }
 }

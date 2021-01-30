@@ -156,12 +156,14 @@ public class GameManager : MonoBehaviour
         if (playerInfo._myPlayerNumber == myPlayerNumber.Player1)
         {
             puntosP1++;
-            puntosP1Text.text = "P1: " + puntosP1.ToString("D2");
+            if(puntosP1Text)
+                puntosP1Text.text = "P1: " + puntosP1.ToString("D2");
         }
         else if (playerInfo._myPlayerNumber == myPlayerNumber.Player2)
         {
             puntosP2++;
-            puntosP2Text.text = "P2: " + puntosP2.ToString("D2");
+            if(puntosP2Text)
+                puntosP2Text.text = "P2: " + puntosP2.ToString("D2");
 
         }
 
