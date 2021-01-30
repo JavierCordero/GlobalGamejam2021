@@ -83,9 +83,9 @@ public class SpawnObjectsManager : MonoBehaviour
 
             if (spawnedBigObject)
             {
-                GameObject go = Instantiate(spawnedBigObject, g.transform.position, Quaternion.Euler(-90,90,-90));
+                GameObject go = Instantiate(spawnedBigObject, g.transform.position, Quaternion.Euler(-90,90, -90));
 
-                foreach(Transform t in go.transform)
+                foreach(Transform t in go.transform.GetChild(0).transform)
                 {
                     switch (so._myRoomType)
                     {
@@ -115,7 +115,7 @@ public class SpawnObjectsManager : MonoBehaviour
                             break;
                     }
 
-                    Instantiate(spawnedSmallObject, t.position, Quaternion.Euler(-90, 90, - 90));
+                    Instantiate(spawnedSmallObject, t.position, Quaternion.Euler(-90, 90, -90));
                 }
             }
         }

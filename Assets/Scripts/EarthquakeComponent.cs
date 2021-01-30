@@ -71,7 +71,8 @@ public class EarthquakeComponent : MonoBehaviour
         _cameraShake = Camera.main.GetComponent<CameraShakeComponent>();
 
         _playerInput = FindObjectOfType<PlayerInput>();
-        earthQuakeSign.enabled = false;
+        if(earthQuakeSign)
+            earthQuakeSign.enabled = false;
     }
 
     public void Update()
@@ -127,7 +128,8 @@ public class EarthquakeComponent : MonoBehaviour
     private IEnumerator Shake()
     {
         //Esperamos este tiempo que va a ser el que se esté viendo la imagen de warning solamente
-        earthQuakeSign.enabled = true;
+        if(earthQuakeSign)
+            earthQuakeSign.enabled = true;
         yield return new WaitForSeconds(signDuration);
 
         //Aquí hacemos el shake propiamente dicho
@@ -145,7 +147,8 @@ public class EarthquakeComponent : MonoBehaviour
         //Volvemos a poner todo como estaba
         EarthquakeTarget.transform.position = _startPos;
         _cooldownTimer = shakeCooldown;
-        earthQuakeSign.enabled = false;
+        if(earthQuakeSign)
+            earthQuakeSign.enabled = false;
         _isShaking = false;
     }
 
