@@ -25,7 +25,7 @@ public class InteractableObject : MonoBehaviour
 
     public void ShowObjectInteraction()
     {
-        if (_interactuableObjectHUD)
+        if (_myInteractuableObjectHUD)
         {
             _myInteractuableObjectHUD.SetActive(true);
         }
@@ -33,7 +33,7 @@ public class InteractableObject : MonoBehaviour
 
     public void HideObjectInteraction()
     {
-        if (_interactuableObjectHUD)
+        if (_myInteractuableObjectHUD)
         {
             _myInteractuableObjectHUD.SetActive(false);
         }
