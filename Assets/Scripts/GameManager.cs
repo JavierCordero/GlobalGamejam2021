@@ -240,7 +240,8 @@ public class GameManager : MonoBehaviour
 
         _canvasObjective.gameObject.transform.localPosition = new Vector3(0, 0, 0); //creeme, es así
         _canvasObjective.gameObject.transform.localScale = new Vector3(1.3F, 1.3F, 1.3F);
-        _canvasObjective.gameObject.transform.Rotate(new Vector3(0, 0));
+        _canvasObjective.gameObject.transform.rotation = Quaternion.Euler(-90, 0, 0);
+
 
         _canvasObjective.GetComponent<Rigidbody>().isKinematic = true;
         _canvasObjective.GetComponent<ObjectiveProp>().enabled = false; //Importante, para que no salga como posible objetivo 
