@@ -345,12 +345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7749d4d3d01134ab14b9c9c77bdfd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &248731577 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1571272055246299433, guid: 14b1a05b38599aa40b6cde57f6518ab3,
-    type: 3}
-  m_PrefabInstance: {fileID: 3647549269176040919}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &268593407 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 89c518312d416fa4b84606cc03275f48,
@@ -815,7 +809,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _characterAnimator
       value: 
-      objectReference: {fileID: 1851947467}
+      objectReference: {fileID: 0}
     - target: {fileID: 2673044410403207354, guid: 14b1a05b38599aa40b6cde57f6518ab3,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -1650,8 +1644,8 @@ MonoBehaviour:
   shakeDuration: 1
   signDuration: 2
   earthQuakeSign: {fileID: 1592375261}
-  shakeCooldown: 0.59
-  shakeProbability: 0
+  shakeCooldown: 1
+  shakeProbability: 27.1
   _cameraShakeDuration: 1
   _cameraShakeForce: 0.1
 --- !u!54 &1518002106
@@ -2245,12 +2239,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843292202}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!95 &1851947467 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1571272055246299433, guid: 14b1a05b38599aa40b6cde57f6518ab3,
-    type: 3}
-  m_PrefabInstance: {fileID: 437831200}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1892825705 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cf309cb87c9053643892e5a126e3f748,
@@ -2415,16 +2403,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1982554279}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_SubmitAction: {fileID: 2064916234097673511, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_CancelAction: {fileID: -1967631576421560919, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_LeftClickAction: {fileID: 8056856818456041789, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_MiddleClickAction: {fileID: 3279352641294131588, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_RightClickAction: {fileID: 3837173908680883260, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_ScrollWheelAction: {fileID: 4502412055082496612, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_TrackedDevicePositionAction: {fileID: 4754684134866288074, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
 --- !u!114 &1982554281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2783,7 +2790,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _characterAnimator
       value: 
-      objectReference: {fileID: 248731577}
+      objectReference: {fileID: 0}
     - target: {fileID: 2673044410403207354, guid: 14b1a05b38599aa40b6cde57f6518ab3,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
