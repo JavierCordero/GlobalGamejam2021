@@ -7,7 +7,15 @@ public class DoorComponent : MonoBehaviour
     [HideInInspector]
     public List<PlayerInformation> _playersInside = new List<PlayerInformation>();
 
-    public Animator _doorAnimator;
+    public enum DoorState { Closed, Open }
+
+    public string m_open, m_closed;
+
+    [HideInInspector]
+    public DoorState m_state = DoorState.Open;
+    public DoorState getDoorState() { return m_state; }
+
+    public Animation _doorAnimator;
     public float _closeDoorTime;
     private bool _doorIsClosed = false;
 
@@ -22,6 +30,9 @@ public class DoorComponent : MonoBehaviour
             _closeDoorHintInstantiated.SetActive(false);
 
         }
+
+        _doorAnimator.Play(m_open);
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,19 +70,21 @@ public class DoorComponent : MonoBehaviour
     }
 
 
-public void CloseDoor()
-{
-    if (!_doorIsClosed)
+    public void CloseDoor()
     {
-        _doorIsClosed = true;
-        _doorAnimator.SetTrigger("CloseDoor");
-        Invoke("OpenDoor", _closeDoorTime);
-    }
-}
+        if (!_doorIsClosed)
+        {
+            _doorAnimator.Play(m_closed);
 
-public void OpenDoor()
-{
-    _doorAnimator.SetTrigger("OpenDoor");
-}
+            _doorIsClosed = true;
+            Invoke("OpenDoor", _closeDoorTime);
+        }
+    }
+
+    public void OpenDoor()
+    {
+        _doorAnimator.Play(m_open);
+        _doorIsClosed = false;
+    }
 
 }

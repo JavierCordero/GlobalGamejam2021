@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4448492765645622380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0.50000006}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1.2595}
   m_Children: []
   m_Father: {fileID: 6987813489893127160}
   m_RootOrder: 0
@@ -67,8 +67,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playersInside: []
-  _doorAnimator: {fileID: 6987813489893127161}
+  m_open: close
+  m_closed: open
+  m_state: 1
+  _doorAnimator: {fileID: 4448492764384721402}
   _closeDoorTime: 10
+  _closeDoorHint: {fileID: 8682413583461974059, guid: e8034cc8386d44f4daa83751ed0dddbc,
+    type: 3}
 --- !u!1 &6987813489893127162
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +83,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6987813489893127160}
-  - component: {fileID: 6987813489893127161}
+  - component: {fileID: 4448492764384721402}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -102,25 +107,23 @@ Transform:
   m_Father: {fileID: 6987813490190894806}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &6987813489893127161
-Animator:
-  serializedVersion: 3
+--- !u!111 &4448492764384721402
+Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6987813489893127162}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cea322b2b21be20489d2aa18be31006f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: bdf604f34542f4449a747e0aed350a18, type: 2}
+  - {fileID: 7400000, guid: dcad2daaa3447374ebb5ec5d8df97ce1, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &6987813490190894792
 GameObject:
   m_ObjectHideFlags: 0
