@@ -6,7 +6,13 @@ public class LightModifier : MonoBehaviour
 {
     Light[] lightsOnScene;
     float[] intensityInitialValues;
-    public float lightOffIntensity = 0.1f, turnOnOffSpeed = 0.1f, errorTolerance = 0.1f;
+
+    [Range(0f, 1f)]
+    public float lightOffIntensity = 0.1f;
+    [Range(0f, 1f)]
+    public float turnOnOffSpeed = 0.1f;
+
+    public float errorTolerance = 0.1f;
     public bool turnOnOffWithLerp = false;
 
     // Start is called before the first frame update
