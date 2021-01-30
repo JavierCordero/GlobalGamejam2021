@@ -2287,6 +2287,24 @@ Transform:
   m_Father: {fileID: 504583869}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &989108057 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 324778209331830636, guid: de0f85f5b3cd73d4bbb5ce17e54c563b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1727023316}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &989108058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989108057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7749d4d3d01134ab14b9c9c77bdfd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1073165479
 GameObject:
   m_ObjectHideFlags: 0
@@ -2911,7 +2929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5d3e722cff5944ea52c79098c84292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 0}
+  timerText: {fileID: 1584826601}
   puntosP1Text: {fileID: 0}
   puntosP2Text: {fileID: 0}
   panelPausa: {fileID: 333861979}
@@ -2919,8 +2937,8 @@ MonoBehaviour:
   volumeSlide: {fileID: 333861978}
   minutesToGetObjective: 5
   secondsToGetObjective: 1
-  IsMultiplayer: 1
-  numObjetivos: 5
+  IsMultiplayer: 0
+  numObjetivos: 3
   posicionObjetivoCanvas: {fileID: 1369951579}
   RandomObjectives: 1
   distanciaMinimaEntreObjetivos: 3

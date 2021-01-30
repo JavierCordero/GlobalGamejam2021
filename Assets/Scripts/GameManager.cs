@@ -77,8 +77,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Para que no entre en el update xd
         if (_isGameOver)
             return;
+
         //Si no tengo objetivo, selecciono uno
         if (_currentObjective == null) SetNewObjective();
         else
@@ -161,21 +163,25 @@ public class GameManager : MonoBehaviour
         if (playerInfo._myPlayerNumber == myPlayerNumber.Player1)
         {
             puntosP1++;
-            if(puntosP1Text)
+            if (puntosP1Text)
                 puntosP1Text.text = "P1: " + puntosP1.ToString("D2");
         }
         else if (playerInfo._myPlayerNumber == myPlayerNumber.Player2)
         {
             puntosP2++;
-            if(puntosP2Text)
+            if (puntosP2Text)
                 puntosP2Text.text = "P2: " + puntosP2.ToString("D2");
 
         }
 
-        numObjetivos--;
-        if (numObjetivos <= 0)
+        if (IsMultiplayer)
         {
-            OnGameOver();
+            numObjetivos--;
+            if (numObjetivos <= 0)
+            {
+                OnGameOver();
+            }
+            else SetNewObjective();
         }
         else SetNewObjective();
     }
