@@ -424,7 +424,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _characterAnimator
       value: 
-      objectReference: {fileID: 1851947467}
+      objectReference: {fileID: 437831201}
     - target: {fileID: 2673044410403207354, guid: 14b1a05b38599aa40b6cde57f6518ab3,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -507,6 +507,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14b1a05b38599aa40b6cde57f6518ab3, type: 3}
+--- !u!95 &437831201 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6147455969917087341, guid: 14b1a05b38599aa40b6cde57f6518ab3,
+    type: 3}
+  m_PrefabInstance: {fileID: 437831200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &578655407 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2673044410403207348, guid: 14b1a05b38599aa40b6cde57f6518ab3,
@@ -1540,12 +1546,6 @@ MonoBehaviour:
   _objectWeight: 8
   _interactuableObjectHUD: {fileID: 8682413583461974059, guid: e8034cc8386d44f4daa83751ed0dddbc,
     type: 3}
---- !u!95 &1851947467 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1571272055246299433, guid: 14b1a05b38599aa40b6cde57f6518ab3,
-    type: 3}
-  m_PrefabInstance: {fileID: 437831200}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2007514711
 PrefabInstance:
   m_ObjectHideFlags: 0
