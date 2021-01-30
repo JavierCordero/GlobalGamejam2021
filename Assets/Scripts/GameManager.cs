@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     //Random Objectives
     [Header("Settings Objetivos")]
+    
+    //public Transform 
     public bool RandomObjectives = true;
     public float distanciaMinimaEntreObjetivos = 3;
 
