@@ -424,7 +424,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _characterAnimator
       value: 
-      objectReference: {fileID: 437831201}
+      objectReference: {fileID: 2122290852}
     - target: {fileID: 2673044410403207354, guid: 14b1a05b38599aa40b6cde57f6518ab3,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -507,12 +507,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14b1a05b38599aa40b6cde57f6518ab3, type: 3}
---- !u!95 &437831201 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6147455969917087341, guid: 14b1a05b38599aa40b6cde57f6518ab3,
-    type: 3}
-  m_PrefabInstance: {fileID: 437831200}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &578655407 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2673044410403207348, guid: 14b1a05b38599aa40b6cde57f6518ab3,
@@ -1245,6 +1239,7 @@ MonoBehaviour:
   timerText: {fileID: 0}
   minutesToGetObjective: 5
   secondsToGetObjective: 1
+  posicionObjetivoCanvas: {fileID: 0}
   RandomObjectives: 1
   distanciaMinimaEntreObjetivos: 3
   _objectiveProps: []
@@ -1630,6 +1625,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06bf8fa01275e444c954c6e8df5bd031, type: 3}
+--- !u!95 &2122290852 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8259957904286045846, guid: 14b1a05b38599aa40b6cde57f6518ab3,
+    type: 3}
+  m_PrefabInstance: {fileID: 437831200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3647549269176040919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1720,7 +1721,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 14b1a05b38599aa40b6cde57f6518ab3, type: 3}
 --- !u!95 &3647549269176040920 stripped
 Animator:
-  m_CorrespondingSourceObject: {fileID: 6147455969917087341, guid: 14b1a05b38599aa40b6cde57f6518ab3,
+  m_CorrespondingSourceObject: {fileID: 8259957904286045846, guid: 14b1a05b38599aa40b6cde57f6518ab3,
     type: 3}
   m_PrefabInstance: {fileID: 3647549269176040919}
   m_PrefabAsset: {fileID: 0}
