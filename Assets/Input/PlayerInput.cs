@@ -183,6 +183,6 @@ public class PlayerInput : MonoBehaviour
 
     private void TogglePause(InputAction.CallbackContext context)
     {
-        GameManager.instance.OnPause();
+        GameManager.instance.OnTogglePause();
     }
 }
