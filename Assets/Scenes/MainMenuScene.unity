@@ -1092,7 +1092,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Press RightShift to push and objet.
+  m_Text: 'Press RightShift to push and object.
 
     *Player 2 press Space.'
 --- !u!222 &399076334
@@ -2659,7 +2659,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'This key allows you to lock doors. Press Q to lock door.
+  m_Text: 'This key allows you to lock doors. Press Q to lock a door.
 
     *Player
     2 press O'
@@ -2748,10 +2748,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f1a149c766475494db9573328ab5feca, type: 3}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 4
     m_MaxSize: 50
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -2761,14 +2761,16 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Multiplayer:
 
-    Find the selected object before your opponent. The first
-    player to find 10 objects wins.
+    Find the selected object before your opponent.
+
+    The
+    first player to find 10 objects wins.
 
 
     Single player:
 
-    How many objects can
-    you find before time runs out?'
+    How many objects
+    can you find before time runs out?'
 --- !u!222 &1124648363
 CanvasRenderer:
   m_ObjectHideFlags: 0
