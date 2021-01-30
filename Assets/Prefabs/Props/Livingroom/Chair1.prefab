@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &324778209331830636
+--- !u!1 &3396317958941812906
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,30 +8,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3858325344864655683}
+  - component: {fileID: 1205793404682750253}
   m_Layer: 0
-  m_Name: Couch
+  m_Name: Chair1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3858325344864655683
+--- !u!4 &1205793404682750253
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 324778209331830636}
+  m_GameObject: {fileID: 3396317958941812906}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -2.0482907, y: 0.474, z: -1.1782839}
-  m_LocalScale: {x: 0.8835, y: 0.8835002, z: 0.8835002}
+  m_LocalPosition: {x: -1.6806641, y: 0.6913053, z: -1.714}
+  m_LocalScale: {x: 1.6979, y: 1.6979007, z: 1.6979007}
   m_Children:
-  - {fileID: 3113854373233848645}
+  - {fileID: 1498765937537632952}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2341153418935413759
+--- !u!1 &4083207317276646444
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,49 +39,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3113854373233848645}
-  - component: {fileID: 2060812001208794848}
-  - component: {fileID: 4286739450152192554}
-  - component: {fileID: 3223481604337201636}
-  - component: {fileID: 3223481604337201642}
-  - component: {fileID: 3223481604337201637}
-  - component: {fileID: 3223481604337201639}
+  - component: {fileID: 1498765937537632952}
+  - component: {fileID: 547444025113262099}
+  - component: {fileID: 5334893161817075171}
+  - component: {fileID: 8131180830839858763}
+  - component: {fileID: 175058568013488140}
+  - component: {fileID: 6864377627213828104}
   m_Layer: 0
-  m_Name: Couch
+  m_Name: Chair_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3113854373233848645
+--- !u!4 &1498765937537632952
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2341153418935413759}
+  m_GameObject: {fileID: 4083207317276646444}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.029428396}
+  m_LocalPosition: {x: 0, y: 0, z: 0.19299999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3858325344864655683}
+  m_Father: {fileID: 1205793404682750253}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2060812001208794848
+--- !u!33 &547444025113262099
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2341153418935413759}
-  m_Mesh: {fileID: 3822247309040838107, guid: 44ead2c882a66a547b0e3c87dbbaa1b6, type: 3}
---- !u!23 &4286739450152192554
+  m_GameObject: {fileID: 4083207317276646444}
+  m_Mesh: {fileID: -3531946766418785785, guid: 7e365ef9009a57340a2df33ac1430165, type: 3}
+--- !u!23 &5334893161817075171
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2341153418935413759}
+  m_GameObject: {fileID: 4083207317276646444}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -93,7 +92,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4427394405292297522, guid: 44ead2c882a66a547b0e3c87dbbaa1b6, type: 3}
+  - {fileID: 8290782892783832528, guid: 7e365ef9009a57340a2df33ac1430165, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,13 +113,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!54 &3223481604337201636
+--- !u!54 &8131180830839858763
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2341153418935413759}
+  m_GameObject: {fileID: 4083207317276646444}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -130,39 +129,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &3223481604337201642
+--- !u!65 &175058568013488140
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2341153418935413759}
+  m_GameObject: {fileID: 4083207317276646444}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.84826225, y: 1.4506135, z: 0.72213125}
-  m_Center: {x: 0.47036532, y: 1.1180809, z: 0.36106557}
---- !u!65 &3223481604337201637
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2341153418935413759}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.7356331, y: 0.6352544, z: 0.72213125}
-  m_Center: {x: 0.026680011, y: 0.07732144, z: 0.3610656}
---- !u!114 &3223481604337201639
+  m_Size: {x: 0.22244632, y: 0.22640991, z: 0.4348184}
+  m_Center: {x: 0.000000029802322, y: 0.008246531, z: 0.037301008}
+--- !u!114 &6864377627213828104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2341153418935413759}
+  m_GameObject: {fileID: 4083207317276646444}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2654be1babce9c40a50683ee011d221, type: 3}
