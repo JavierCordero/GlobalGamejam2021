@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
 
     //Random Objectives
     [Header("Settings Objetivos")]
-    
-    //public Transform 
+
+    public Transform posicionObjetivoCanvas;        //Posición en el mundo que va a tener el objeto canvas
     public bool RandomObjectives = true;
     public float distanciaMinimaEntreObjetivos = 3;
 
@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<ObjectiveProp> _objectiveProps;    //Ahora mismo es de objetivos, pero será de puntos de spawn
     private ObjectiveProp _currentObjective;
+    private ObjectiveProp _canvasObjective;
     private int _objectiveIndex;    //Indice en la lista de objetivos en caso de no ser aleatorio
 
     //Timer en segundos
@@ -109,12 +110,20 @@ public class GameManager : MonoBehaviour
                     else _currentObjective = _objectiveProps[rnd];
 
                 }
+                //Setup del objetivo en el canvas
+                ObjectiveCanvasCopySetUp();
+
+
             }
+
+            //Iterativo, deprecadisimo
             else
             {
                 _objectiveIndex++;
                 _currentObjective = _objectiveProps[_objectiveIndex];
             }
+
+            //Establecemos el objetivo en el objeto
             _currentObjective.SetAsCurrentObjective();
             Debug.LogWarning("CURRENT OBJECTIVE: " + _currentObjective);
         }
@@ -124,7 +133,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Objetivo conseguido :)");
         _objectiveProps.Remove(collectedProp);
-        _currentObjective = null; //a null porque se pone en el update
+        SetNewObjective(); //TODO: va aqui o no hace falta?
 
         //Sumar tiempo o lo que sea
         _currentTimer += 60;
@@ -140,5 +149,28 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game over!");
         //Ir al menú de resultados, o lo que sea
+    }
+
+
+    private void ObjectiveCanvasCopySetUp()
+    {
+        //Spawn de una copia del objeto en el área de objetivo del Canvas
+        ObjectiveProp old = _canvasObjective;
+       
+        _canvasObjective = Instantiate(_currentObjective, posicionObjetivoCanvas);
+
+        _canvasObjective.gameObject.transform.localPosition = new Vector3(0, 0, 0); //creeme, es así
+        _canvasObjective.gameObject.transform.localScale = new Vector3(1.3F, 1.3F, 1.3F);
+        _canvasObjective.gameObject.transform.Rotate(new Vector3(0, 0));
+
+        _canvasObjective.GetComponent<Rigidbody>().isKinematic = true;
+        _canvasObjective.GetComponent<ObjectiveProp>().enabled = false; //Importante, para que no salga como posible objetivo 
+        _canvasObjective.GetComponent<InteractableObject>().enabled = false;
+
+        if (old != null)
+        {
+            Destroy(old.gameObject);
+        }
+        
     }
 }

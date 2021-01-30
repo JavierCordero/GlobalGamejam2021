@@ -89,8 +89,8 @@ public class EarthquakeComponent : MonoBehaviour
     public void StartEarthquake()
     {
         float prob = shakeProbability / 100;
-        float rnd = Random.Range(0, 1);
-        if (rnd <= prob)
+        float rnd = Random.Range(0.01f, 1);
+        if (rnd < prob)
         {
             //Consumimos el powerup
             if (_isPowerUp) _isPowerUp = false;
@@ -135,7 +135,6 @@ public class EarthquakeComponent : MonoBehaviour
         while (_timer < shakeDuration)
         {
             _timer += Time.deltaTime;
-            Debug.Log(_timer);
             _randomPos = _startPos + (Random.insideUnitSphere * shakeForce); //Coloco el objeto en una posición aleatoria de un área de tamaño "proporcional a la fuerza"
             EarthquakeTarget.transform.position = _randomPos;
 
