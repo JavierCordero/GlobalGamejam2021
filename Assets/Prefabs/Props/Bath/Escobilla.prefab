@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2505770664347677329}
   - component: {fileID: 4520489323199698965}
   - component: {fileID: 5366429869047624553}
+  - component: {fileID: 4285065983942003137}
   m_Layer: 0
   m_Name: Escobilla
   m_TagString: Untagged
@@ -106,4 +107,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectWeight: 1
-  _interactuableObjectHUD: {fileID: 0}
+  _interactuableObjectHUD: {fileID: 8682413583461974059, guid: e8034cc8386d44f4daa83751ed0dddbc,
+    type: 3}
+--- !u!65 &4285065983942003137
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4163214280476726084}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.17220531, y: 0.16958918, z: 0.37976986}
+  m_Center: {x: 0, y: -0.000000003725291, z: 0.18988493}
