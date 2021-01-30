@@ -30,12 +30,13 @@ public class ObjectiveProp : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         //Si he colisionado con un player...
-        if (collision.collider.GetComponent<PlayerMovement>() != null)
+        PlayerInformation info = collision.collider.GetComponent<PlayerInformation>();
+        if (info != null)
         {
             if (isCurrentObjective)
             {
-                GameManager.instance.OnObjectiveCollected(this);
-                Destroy(this.gameObject);
+                GameManager.instance.OnObjectiveCollected(this, info);
+                isCurrentObjective = false;
             }
         }
     }

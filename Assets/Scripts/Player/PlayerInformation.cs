@@ -9,8 +9,6 @@ public enum PowerUps { CLOSE_DOOR, TURN_LIGHTS_OFF, NONE}
 public class PlayerInformation : MonoBehaviour
 {
     public myPlayerNumber _myPlayerNumber;
-
-    
     public PowerUps _currentPowerUp = PowerUps.NONE;
 
     private DoorComponent[] doors;
@@ -44,5 +42,6 @@ public class PlayerInformation : MonoBehaviour
                 d.CloseDoor();
         }
     }
+
 
 }
