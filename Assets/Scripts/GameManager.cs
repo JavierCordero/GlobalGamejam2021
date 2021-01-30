@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     //UI
-    public Text timerText;
+    public Text timerText; //Esto igual ni va aquí
 
     //Gestión del tiempo
     [Header("Tiempo para Objetivo")]
@@ -14,12 +14,14 @@ public class GameManager : MonoBehaviour
     public float secondsToGetObjective = 1;
 
     //Random Objectives
-    public bool RandomObjectives = false;
+    public bool RandomObjectives = true;
+    public float distanciaMinimaEntreObjetivos = 3;
 
     //Props Objetivo
-    public List<ObjectiveProp>  _objectiveProps;    //Ahora mismo es de objetivos, pero será de puntos de spawn
-    private ObjectiveProp       _currentObjective;  
-    private int                 _objectiveIndex;    //Indice en la lista de objetivos en caso de no ser aleatorio
+    [SerializeField]
+    private List<ObjectiveProp> _objectiveProps;    //Ahora mismo es de objetivos, pero será de puntos de spawn
+    private ObjectiveProp _currentObjective;
+    private int _objectiveIndex;    //Indice en la lista de objetivos en caso de no ser aleatorio
 
     //Timer en segundos
     private float _currentTimer;
@@ -62,8 +64,8 @@ public class GameManager : MonoBehaviour
                 _currentTimer -= Time.deltaTime;
                 int minutes = (int)_currentTimer / 60;              //Get total minutes
                 int seconds = (int)_currentTimer - (minutes * 60);  //Get seconds for display alongside minutes
-                if(timerText)
-                    timerText.text = "TIEMPO: " + minutes.ToString("D2") + ":" + seconds.ToString("D2");      
+                if (timerText)
+                    timerText.text = "TIEMPO: " + minutes.ToString("D2") + ":" + seconds.ToString("D2");
             }
             else
             {
@@ -84,8 +86,25 @@ public class GameManager : MonoBehaviour
         {
             if (RandomObjectives)
             {
-                int rnd = Random.Range(0, _objectiveProps.Count);
-                _currentObjective = _objectiveProps[rnd];
+                bool stop = false;
+                int sameDistanceCount = 0; //Para evitar while-trues
+                while (!stop)
+                {
+                    int rnd = Random.Range(0, _objectiveProps.Count);
+                    if (_currentObjective != null)
+                    {
+                        float dist = Vector3.Distance(_currentObjective.transform.position, _objectiveProps[rnd].transform.position);
+                        if (dist > distanciaMinimaEntreObjetivos || sameDistanceCount == _objectiveProps.Count)
+                        {
+                            _currentObjective = _objectiveProps[rnd];
+                            stop = true;
+                        }
+                        else sameDistanceCount++;
+                    }
+                    //Si es null, me sirve cualquiera
+                    else _currentObjective = _objectiveProps[rnd];
+
+                }
             }
             else
             {
@@ -93,7 +112,7 @@ public class GameManager : MonoBehaviour
                 _currentObjective = _objectiveProps[_objectiveIndex];
             }
             _currentObjective.SetAsCurrentObjective();
-            //Debug.LogWarning("CURRENT OBJECTIVE: " + _currentObjective);
+            Debug.LogWarning("CURRENT OBJECTIVE: " + _currentObjective);
         }
     }
 
