@@ -138,7 +138,8 @@ public class EarthquakeComponent : MonoBehaviour
         {
             _timer += Time.deltaTime;
             _randomPos = _startPos + (Random.insideUnitSphere * shakeForce); //Coloco el objeto en una posición aleatoria de un área de tamaño "proporcional a la fuerza"
-            EarthquakeTarget.transform.position = _randomPos;
+            if(EarthquakeTarget)
+                EarthquakeTarget.transform.position = _randomPos;
 
 
             yield return null;

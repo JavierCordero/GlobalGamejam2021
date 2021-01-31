@@ -1079,6 +1079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myPowerUpType: 0
+  powerUpSprite: {fileID: 0}
 --- !u!1 &1518002104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,6 +1184,9 @@ MonoBehaviour:
   timerText: {fileID: 0}
   puntosP1Text: {fileID: 0}
   puntosP2Text: {fileID: 0}
+  panelPausa: {fileID: 0}
+  panelEndGameSinglePlayer: {fileID: 0}
+  volumeSlide: {fileID: 0}
   minutesToGetObjective: 5
   secondsToGetObjective: 1
   IsMultiplayer: 0
@@ -1211,8 +1215,8 @@ MonoBehaviour:
   BigCorridor: []
   BigDyingroom: []
   BigLivingroom:
-  - {fileID: 90880183545310399, guid: de0f85f5b3cd73d4bbb5ce17e54c563b, type: 3}
-  - {fileID: 4093317829212861782, guid: 06933b7a279b56f4db3ecee030749c01, type: 3}
+  - {fileID: 8041651672532383805, guid: d688a57f5b324484a8e01e87a5ecaaba, type: 3}
+  - {fileID: 8041651672532383805, guid: d688a57f5b324484a8e01e87a5ecaaba, type: 3}
   SmallBath: []
   SmallKitchen: []
   SmallBig_room: []
@@ -1314,6 +1318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myPowerUpType: 0
+  powerUpSprite: {fileID: 0}
 --- !u!54 &1724365587
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2177,6 +2182,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 2.792058
       objectReference: {fileID: 0}
+    - target: {fileID: 7176788603029335909, guid: 14b1a05b38599aa40b6cde57f6518ab3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 89dce7b951a58514dbe13529702ebd91, type: 2}
     - target: {fileID: 7842351147245017523, guid: 14b1a05b38599aa40b6cde57f6518ab3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

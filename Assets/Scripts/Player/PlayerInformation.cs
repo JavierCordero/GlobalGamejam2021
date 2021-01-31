@@ -47,11 +47,10 @@ public class PlayerInformation : MonoBehaviour
                 break;
         }
 
-        _currentPowerUp = PowerUps.NONE;
-        if (powerUpRenderer.sprite != icedSprite)
-        {
-            powerUpRenderer.sprite = null;
-        }
+        
+        
+        
+       
 
     }
 
@@ -66,7 +65,10 @@ public class PlayerInformation : MonoBehaviour
         foreach (DoorComponent d in doors)
         {
             if (d._playersInside.Contains(this))
-                d.CloseDoor();
+            {
+                d.CloseDoor(); powerUpRenderer.sprite = null;
+                _currentPowerUp = PowerUps.NONE;
+            }
         }
     }
 
@@ -75,11 +77,13 @@ public class PlayerInformation : MonoBehaviour
         lightModifier.TurnOffLights(_myPlayerNumber == myPlayerNumber.Player1);
         yield return new WaitForSeconds(_waitLightPowerUp);
         lightModifier.TurnOnLights(_myPlayerNumber == myPlayerNumber.Player1);
+        _currentPowerUp = PowerUps.NONE; powerUpRenderer.sprite = null;
     }
 
     //Desactivo el movimiento, espero y se lo vuelvo a enchufar
     IEnumerator PlayerFreeze()
     {
+        _currentPowerUp = PowerUps.NONE;
         GetComponent<PlayerMovement>().enabled = false;
         PowerUps oldPowerUp = _currentPowerUp;                  //No queremos que lo active?
         _currentPowerUp = PowerUps.NONE;
