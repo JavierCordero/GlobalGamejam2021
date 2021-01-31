@@ -27,7 +27,7 @@ public class LightModifier : MonoBehaviour
         lightsOnScene = FindObjectsOfType<Light>();
         intensityInitialValues = new float[lightsOnScene.Length];
         currentCoroutine = new Coroutine[lightsOnScene.Length];
-        for(int i=0; i<intensityInitialValues.Length; ++i)
+        for (int i = 0; i < intensityInitialValues.Length; ++i)
         {
             intensityInitialValues[i] = lightsOnScene[i].intensity;
             currentCoroutine[i] = null;
@@ -40,15 +40,15 @@ public class LightModifier : MonoBehaviour
         {
             for (int i = 0; i < lightsOnScene.Length; ++i)
             {
-                if (lightsOnScene[i]==lightP1|| lightsOnScene[i]==lightP2)
+                if (lightsOnScene[i] == lightP1 || lightsOnScene[i] == lightP2)
                 {
-                    if (isPlayer1&& lightsOnScene[i]==lightP1)
+                    if (isPlayer1 && lightsOnScene[i] == lightP1)
                     {
                         if (currentCoroutine[i] != null)
                             StopCoroutine(currentCoroutine[i]);
                         currentCoroutine[i] = StartCoroutine(LerpLightIntensity(i, intensityInitialValues[i], turnOnOffSpeed, errorTolerance));
                     }
-                    else if(!isPlayer1 && lightsOnScene[i]==lightP2)
+                    else if (!isPlayer1 && lightsOnScene[i] == lightP2)
                     {
                         if (currentCoroutine[i] != null)
                             StopCoroutine(currentCoroutine[i]);
@@ -67,7 +67,7 @@ public class LightModifier : MonoBehaviour
         {
             for (int i = 0; i < lightsOnScene.Length; ++i)
             {
-                if (lightsOnScene[i] == lightP1 || lightsOnScene[i]== lightP2)
+                if (lightsOnScene[i] == lightP1 || lightsOnScene[i] == lightP2)
                 {
                     if (isPlayer1 && lightsOnScene[i] == lightP1)
                     {
@@ -88,7 +88,7 @@ public class LightModifier : MonoBehaviour
     {
         if (turnOnOffWithLerp)
         {
-            for(int i=0; i<lightsOnScene.Length; ++i)
+            for (int i = 0; i < lightsOnScene.Length; ++i)
             {
                 if (lightsOnScene[i] == lightP1 || lightsOnScene[i] == lightP2)
                 {
@@ -136,11 +136,17 @@ public class LightModifier : MonoBehaviour
 
     IEnumerator LerpLightIntensity(int lightId, float targetValue, float speed, float errorTolerance)
     {
-        while (Mathf.Abs(lightsOnScene[lightId].intensity - targetValue) > errorTolerance)
+        if (lightsOnScene[lightId])
         {
-            lightsOnScene[lightId].intensity = Mathf.Lerp(lightsOnScene[lightId].intensity, targetValue, speed);
-            print(lightId + " " + targetValue);
-            yield return null;
+            while (Mathf.Abs(lightsOnScene[lightId].intensity - targetValue) > errorTolerance)
+            {
+                if (lightsOnScene[lightId])
+                {
+                    lightsOnScene[lightId].intensity = Mathf.Lerp(lightsOnScene[lightId].intensity, targetValue, speed);
+                    print(lightId + " " + targetValue);
+                }
+                yield return null;
+            }
         }
     }
 }

@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     public Text puntosP1Text;           //Puntos p1
     public Text puntosP2Text;           //Puntos p2
     public GameObject panelPausa;       //Panel de la pausa
-    public GameObject panelEndGameSinglePlayer;//Panel del fin juego singleplayer
-    public Slider volumeSlide;       //Panel de la pausa
+    public GameObject panelEndGame;     //Panel del fin juego singleplayer
+    public Slider volumeSlide;          //Panel de la pausa
 
     //Gestión del tiempo
     [Header("Tiempo para Objetivo")]
@@ -27,9 +27,12 @@ public class GameManager : MonoBehaviour
     //Random Objectives
     [Header("Settings Objetivos")]
     public float numObjetivos = 5;
-    public Transform posicionObjetivoCanvas;        //Posición en el mundo que va a tener el objeto canvas
-    public bool RandomObjectives = true;
     public float distanciaMinimaEntreObjetivos = 3;
+    public bool RandomObjectives = true;
+    public Text textoObjetivo;
+
+    public Transform posicionObjetivoCanvas;        //Posición en el mundo que va a tener el objeto canvas
+
 
     //Props Objetivo
     [SerializeField]
@@ -164,14 +167,13 @@ public class GameManager : MonoBehaviour
         {
             puntosP1++;
             if (puntosP1Text)
-                puntosP1Text.text = "P1: " + puntosP1.ToString("D2");
+                puntosP1Text.text = "Puntos P1: " + puntosP1.ToString("D2");
         }
         else if (playerInfo._myPlayerNumber == myPlayerNumber.Player2)
         {
             puntosP2++;
             if (puntosP2Text)
-                puntosP2Text.text = "P2: " + puntosP2.ToString("D2");
-
+                puntosP2Text.text = "Puntos P2: " + puntosP2.ToString("D2");
         }
 
         if (IsMultiplayer)
@@ -197,16 +199,29 @@ public class GameManager : MonoBehaviour
         if (_isGameOver)
             return;
         _isGameOver = true;
+
         Debug.Log("Game over!");
         if (!IsMultiplayer)
             GameOverSinglePlayer();
+        else GameOverMultiPlayer();
         //Ir al menú de resultados, o lo que sea
     }
 
     void GameOverSinglePlayer()
     {
-        panelEndGameSinglePlayer.SetActive(true);
-        panelEndGameSinglePlayer.GetComponentInChildren<Text>().text = "You have found " + puntosP1.ToString() + " objects!!!";
+        panelEndGame.SetActive(true);
+        panelEndGame.GetComponentInChildren<Text>().text = "You have found " + puntosP1.ToString() + " objects!!!";
+    }  
+    
+    void GameOverMultiPlayer()
+    {
+        panelEndGame.SetActive(true);
+        Text[] textos = panelEndGame.GetComponentsInChildren<Text>();
+
+        //Esto es turbocutre pero nos quedan menos de 5h 
+        textos[0].text = "GAME OVER";
+        textos[1].text = "Player one found: " + puntosP1.ToString() + " objects!!!";
+        textos[2].text = "Player two found: " + puntosP2.ToString() + " objects!!!";
     }
 
     public void OnTogglePause()
@@ -244,9 +259,11 @@ public class GameManager : MonoBehaviour
 
         _canvasObjective = Instantiate(_currentObjective, posicionObjetivoCanvas);
 
+        textoObjetivo.text = _canvasObjective.name;
+
         _canvasObjective.gameObject.transform.localPosition = new Vector3(0, 0, 0); //creeme, es así
         _canvasObjective.gameObject.transform.localScale = new Vector3(1.3F, 1.3F, 1.3F);
-        _canvasObjective.gameObject.transform.rotation = Quaternion.Euler(-90, 0, 0);
+        _canvasObjective.gameObject.transform.rotation = Quaternion.Euler(-60, 0, 0);
 
 
         _canvasObjective.GetComponent<Rigidbody>().isKinematic = true;
