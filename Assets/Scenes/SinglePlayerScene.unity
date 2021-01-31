@@ -5807,7 +5807,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1518002109}
         m_MethodName: OnGameExit
         m_Mode: 1
         m_Arguments:
@@ -6406,7 +6406,7 @@ GameObject:
   - component: {fileID: 1336013520}
   - component: {fileID: 1336013519}
   m_Layer: 5
-  m_Name: Crono (1)
+  m_Name: points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6463,7 +6463,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: Points
 --- !u!222 &1336013520
 CanvasRenderer:
   m_ObjectHideFlags: 0
