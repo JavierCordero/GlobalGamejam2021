@@ -45,7 +45,9 @@ GameObject:
   - component: {fileID: 2673044410403207352}
   - component: {fileID: 8800747017423771945}
   - component: {fileID: 8259957903828225708}
-  m_Layer: 0
+  - component: {fileID: 1572953336}
+  - component: {fileID: 1572953337}
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -155,6 +157,79 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myPlayer: {fileID: 1965259523}
+--- !u!114 &1572953336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2673044410403207348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 2673044410403207353}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 1
+  m_ShowCustomSorter: 1
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
+--- !u!114 &1572953337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2673044410403207348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab10b35243598e47b9c035880d9cb37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myPlayer: {fileID: 1965259523}
 --- !u!1 &2906353475768978651
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,8 +322,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.12223097
+  m_Center: {x: 0, y: -0.035954755, z: 0.03894951}
 --- !u!54 &2906353475768978656
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -576,7 +651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionForce: 2
-  _interactionCounter: 1
+  _interactionCounter: 0.01
   _interactionSpehereObject: {fileID: 2906353475768978651}
 --- !u!114 &2673044410195329378
 MonoBehaviour:
@@ -3080,8 +3155,8 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0
-  m_Range: 10
-  m_SpotAngle: 30
+  m_Range: 6
+  m_SpotAngle: 63.442833
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -3217,15 +3292,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 05b39cbb4eca0d84b9cec88e24565c70, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5186aac8dc6191649ba67736589ae94e, type: 3}
---- !u!4 &6390816844974868051 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5186aac8dc6191649ba67736589ae94e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6861805168526238136}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6051552174553373929 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5186aac8dc6191649ba67736589ae94e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6861805168526238136}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6390816844974868051 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5186aac8dc6191649ba67736589ae94e,
     type: 3}
   m_PrefabInstance: {fileID: 6861805168526238136}
   m_PrefabAsset: {fileID: 0}
