@@ -266,7 +266,8 @@ public class GameManager : MonoBehaviour
     {
         //TODO: Cambia a la escena de menú, que ni idea de cuál es
         Debug.LogWarning("Yeee");
-        SceneManager.LoadScene("MainMenuScene");
+        //SceneManager.LoadScene("MainMenuScene");
+        Application.Quit();
         //SceneManager.LoadSceneAsync(0);
     }
 

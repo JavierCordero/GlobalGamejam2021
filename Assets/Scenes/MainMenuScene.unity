@@ -11060,7 +11060,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1642489268}
-  - component: {fileID: 1642489267}
   - component: {fileID: 1648449841}
   m_Layer: 10
   m_Name: PostProcessing
@@ -11068,19 +11067,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1642489267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642489266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_IsActive: 0
 --- !u!4 &1642489268
 Transform:
   m_ObjectHideFlags: 0
