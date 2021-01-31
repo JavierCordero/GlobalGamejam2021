@@ -37,7 +37,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2654be1babce9c40a50683ee011d221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectWeight: 3
+  _objectWeight: 5
   _interactuableObjectHUD: {fileID: 8682413583461974059, guid: e8034cc8386d44f4daa83751ed0dddbc,
     type: 3}
 --- !u!1001 &10869424921981340
@@ -110,7 +110,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ef3816f56e5552b4ebc97c81743075d6,
         type: 3}
       propertyPath: m_Name
-      value: Pescado
+      value: Pescado Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef3816f56e5552b4ebc97c81743075d6, type: 3}
