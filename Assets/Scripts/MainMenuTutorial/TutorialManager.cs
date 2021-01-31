@@ -15,4 +15,8 @@ public class TutorialManager : MonoBehaviour
         index++;
         texts[index].gameObject.SetActive(true);
     }
+    public void DeactivateText()
+    {
+        texts[index].gameObject.SetActive(false);
+    }
 }
