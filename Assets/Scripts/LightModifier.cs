@@ -11,7 +11,7 @@ public class LightModifier : MonoBehaviour
 
     [Range(0f, 1f)]
     public float lightOffIntensity = 0.1f;
-    [Range(0f, 1f)]
+    [Range(0f, 7f)]
     public float playerLightOnIntensity = 1f;
     [Range(0f, 1f)]
     public float turnOnOffSpeed = 0.1f;

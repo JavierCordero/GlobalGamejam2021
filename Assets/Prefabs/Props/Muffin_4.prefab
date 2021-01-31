@@ -121,6 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2654be1babce9c40a50683ee011d221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectWeight: 3
+  _objectWeight: 5
   _interactuableObjectHUD: {fileID: 8682413583461974059, guid: e8034cc8386d44f4daa83751ed0dddbc,
     type: 3}

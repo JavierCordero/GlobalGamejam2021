@@ -13,18 +13,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3051766, y: 0.30517653, z: 0.30517665}
   m_Center: {x: 0.059943773, y: -0.05994402, z: 0.12687245}
---- !u!114 &9165847621573631747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3722094021556269725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e7749d4d3d01134ab14b9c9c77bdfd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4035908914072634537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37,9 +25,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2654be1babce9c40a50683ee011d221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectWeight: 3
+  _objectWeight: 5
   _interactuableObjectHUD: {fileID: 8682413583461974059, guid: e8034cc8386d44f4daa83751ed0dddbc,
     type: 3}
+--- !u!114 &9165847621573631747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722094021556269725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7749d4d3d01134ab14b9c9c77bdfd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4568586378689531852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 85aedb02ff08268469e30d087467c425,
         type: 3}
       propertyPath: m_Name
-      value: Pelota
+      value: Pelota Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85aedb02ff08268469e30d087467c425, type: 3}
