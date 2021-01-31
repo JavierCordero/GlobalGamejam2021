@@ -11687,6 +11687,11 @@ PrefabInstance:
       propertyPath: _interactionCounter
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 2906353475768978651, guid: 14b1a05b38599aa40b6cde57f6518ab3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2906353475891254430, guid: 14b1a05b38599aa40b6cde57f6518ab3,
         type: 3}
       propertyPath: m_RootOrder
