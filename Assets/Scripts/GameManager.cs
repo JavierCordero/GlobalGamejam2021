@@ -6,6 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    [Header("Audio Settings")]
+    public AudioSource menuMusic;
+    public AudioSource pickUpMusic;
+    public AudioSource newObjectiveMusic;
+    public AudioSource timerAlertMusic;
+    public float generalVolume = 100;
+    private bool timerPlayed;
+
     //UI
     [Header("Textos de la escena")]
     public Text timerText;              //Esto igual ni va aquí
@@ -75,6 +84,8 @@ public class GameManager : MonoBehaviour
         _objectiveProps = new List<ObjectiveProp>();
         _currentTimer = secondsToGetObjective + (minutesToGetObjective * 60);
         puntosP1 = puntosP2 = 0;
+
+        menuMusic.Play();
     }
 
     // Update is called once per frame
@@ -96,8 +107,18 @@ public class GameManager : MonoBehaviour
                     _currentTimer -= Time.deltaTime;
                     int minutes = (int)_currentTimer / 60;              //Get total minutes
                     int seconds = (int)_currentTimer - (minutes * 60);  //Get seconds for display alongside minutes
+                    if (!timerPlayed && timerText && seconds <= 6)
+                    {
+                        timerAlertMusic.Play();
+                        timerPlayed = true;
+                    }
+
                     if (timerText)
+                    {
                         timerText.text = "TIME: " + minutes.ToString("D2") + ":" + seconds.ToString("D2");
+                        
+                    }
+                        
                 }
                 else
                 {
@@ -140,6 +161,7 @@ public class GameManager : MonoBehaviour
                 }
                 //Setup del objetivo en el canvas
                 ObjectiveCanvasCopySetUp();
+                newObjectiveMusic.Play();
 
 
             }
@@ -159,7 +181,7 @@ public class GameManager : MonoBehaviour
 
     public void OnObjectiveCollected(ObjectiveProp collectedProp, PlayerInformation playerInfo)
     {
-        Debug.Log("Objetivo conseguido :)");
+        pickUpMusic.Play();
         _objectiveProps.Remove(collectedProp);
 
         //Sumar tiempo o lo que sea
