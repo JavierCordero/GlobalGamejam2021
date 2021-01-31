@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public float numObjetivos = 5;
     public float distanciaMinimaEntreObjetivos = 3;
     public bool RandomObjectives = true;
-    public Text textoObjetivo;
+    public TMPro.TextMeshProUGUI textoObjetivo;
 
     public Transform posicionObjetivoCanvas;        //Posición en el mundo que va a tener el objeto canvas
 
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //Para que no entre en el update xd
-        if (_isGameOver)
+        if (_isGameOver || _isPaused)
             return;
 
         //Si no tengo objetivo, selecciono uno
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
                     int minutes = (int)_currentTimer / 60;              //Get total minutes
                     int seconds = (int)_currentTimer - (minutes * 60);  //Get seconds for display alongside minutes
                     if (timerText)
-                        timerText.text = "TIEMPO: " + minutes.ToString("D2") + ":" + seconds.ToString("D2");
+                        timerText.text = "TIME: " + minutes.ToString("D2") + ":" + seconds.ToString("D2");
                 }
                 else
                 {
@@ -259,10 +259,11 @@ public class GameManager : MonoBehaviour
 
         _canvasObjective = Instantiate(_currentObjective, posicionObjetivoCanvas);
 
-        textoObjetivo.text = _canvasObjective.name;
+        if(textoObjetivo)
+            textoObjetivo.text = _currentObjective.name.Split('(')[0];
 
-        _canvasObjective.gameObject.transform.localPosition = new Vector3(0, 0, 0); //creeme, es así
-        _canvasObjective.gameObject.transform.localScale = new Vector3(1.3F, 1.3F, 1.3F);
+        _canvasObjective.gameObject.transform.localPosition = new Vector3(0, -0.5f, 0); //creeme, es así
+        _canvasObjective.gameObject.transform.localScale = new Vector3(1.5F, 1.5F, 1.5F);
         _canvasObjective.gameObject.transform.rotation = Quaternion.Euler(-60, 0, 0);
 
 

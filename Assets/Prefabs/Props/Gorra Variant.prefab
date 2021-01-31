@@ -26,7 +26,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectWeight: 5
-  _interactuableObjectHUD: {fileID: 0}
+  _interactuableObjectHUD: {fileID: 8682413583461974059, guid: e8034cc8386d44f4daa83751ed0dddbc,
+    type: 3}
 --- !u!114 &9144282175462370106
 MonoBehaviour:
   m_ObjectHideFlags: 0

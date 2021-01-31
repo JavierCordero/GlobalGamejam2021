@@ -43,14 +43,13 @@ public class PlayerInformation : MonoBehaviour
                 break;
             case PowerUps.ICE_ATTACK:
                 if (otherPlayer)
+                {
+                    _currentPowerUp = PowerUps.NONE;
+                    powerUpRenderer.sprite = null;
                     otherPlayer.GetComponent<PlayerInformation>().OnIceAttacked();
+                }
                 break;
         }
-
-        
-        
-        
-       
 
     }
 
