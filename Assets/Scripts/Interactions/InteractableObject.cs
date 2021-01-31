@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractableObject : MonoBehaviour
 {
     [SerializeField]
-    private float _objectWeight = 1;
+    private float _objectWeight = 5;
 
     public GameObject _interactuableObjectHUD = null;
     private GameObject _myInteractuableObjectHUD = null;
