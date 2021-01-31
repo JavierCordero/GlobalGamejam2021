@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     public AudioSource pickUpMusic;
     public AudioSource newObjectiveMusic;
     public AudioSource timerAlertMusic;
-    public float generalVolume = 100;
+    [Range(0f,1f)]
+    public float generalVolume = 0.5f;
     private bool timerPlayed;
 
     //UI
@@ -86,6 +87,8 @@ public class GameManager : MonoBehaviour
         puntosP1 = puntosP2 = 0;
 
         menuMusic.Play();
+        menuMusic.volume = generalVolume;
+        volumeSlide.value = generalVolume;
     }
 
     // Update is called once per frame
@@ -107,7 +110,7 @@ public class GameManager : MonoBehaviour
                     _currentTimer -= Time.deltaTime;
                     int minutes = (int)_currentTimer / 60;              //Get total minutes
                     int seconds = (int)_currentTimer - (minutes * 60);  //Get seconds for display alongside minutes
-                    if (!timerPlayed && timerText && seconds <= 6)
+                    if (!timerPlayed && timerText && seconds <= 6 && minutes == 0)
                     {
                         timerAlertMusic.Play();
                         timerPlayed = true;
@@ -269,9 +272,9 @@ public class GameManager : MonoBehaviour
 
     public void OnVolumeChange()
     {
-        float volumen = volumeSlide.value;
-        //Wow mira soy una canción voy a ajustar mi volumen xdd
-        Debug.Log("Volumen: " + volumen);
+        generalVolume = volumeSlide.value;
+        menuMusic.volume = generalVolume;
+
     }
 
     private void ObjectiveCanvasCopySetUp()
